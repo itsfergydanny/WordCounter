@@ -72,17 +72,17 @@ public class Main {
     }
 
     private static void printResult(Map<String, Integer> result) {
-        StringBuilder str = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
         int count = 0;
         for (String key : result.keySet()) {
-            str.append(key).append(": ").append(result.get(key));
+            sb.append(key).append(": ").append(result.get(key));
             if (count < result.size() - 1) {
-                str.append("\n");
+                sb.append("\n");
                 continue;
             }
             count++;
         }
-        System.out.print(str);
+        System.out.print(sb);
     }
 
     private static Map<String, Integer> getMapOrderedByValue(Map<String, Integer> map) {
