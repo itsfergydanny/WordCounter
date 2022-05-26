@@ -58,7 +58,7 @@ public class Main {
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line = br.readLine();
             while (line != null) {
-                String[] words = line.replaceAll("[^a-zA-Z ]", "").toLowerCase().split("\\s+");
+                String[] words = line.replaceAll("[^a-zA-Z' ]", "").toLowerCase().split("\\s+");
                 for (String word : words) {
                     map.put(word, map.getOrDefault(word, 0) + 1);
                 }
@@ -73,10 +73,16 @@ public class Main {
 
     private static void printResult(Map<String, Integer> result) {
         StringBuilder str = new StringBuilder();
+        int count = 0;
         for (String key : result.keySet()) {
-            str.append(key).append(": ").append(result.get(key)).append("\n");
+            str.append(key).append(": ").append(result.get(key));
+            if (count < result.size() - 1) {
+                str.append("\n");
+                continue;
+            }
+            count++;
         }
-        System.out.println(str);
+        System.out.print(str);
     }
 
     private static Map<String, Integer> getMapOrderedByValue(Map<String, Integer> map) {
